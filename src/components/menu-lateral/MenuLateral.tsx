@@ -36,7 +36,7 @@ export const MenuLateral = () => {
   const theme = useTheme();
   const smDown = useMediaQuery(theme.breakpoints.down('sm'));
 
-  const { isDrawerOpen, toggleDrawerOpen } = useDrawerContext();
+  const { isDrawerOpen, drawerOptions, toggleDrawerOpen } = useDrawerContext();
 
   return (
     <>
@@ -62,14 +62,7 @@ export const MenuLateral = () => {
               to={drawerOption.path}
               onCLick={smDown ? toggleDrawerOpen : undefined}
               />
-            ))}
-              <ListItemLink
-              icon='home'
-              label='Alunos'
-              to='Aluno'
-              onCLick={smDown ? toggleDrawerOpen : undefined}
-              />
-            
+            ))}       
             </List>
           </Box>
 
