@@ -1,6 +1,6 @@
 import { FerramentasDaListagem } from "../../components/menu-lateral";
 import { FerramentasDeDetalhe } from "../../components/menu-lateral/ferramentas-de-detalhe/FerramentasDeDetalhe";
-import { LayoutBaseDePagina } from "../../layouts";
+import { LayoutBaseDePagina } from "../../layouts/LayoutBaseDePagina";
 
 export const Dashboard = () =>{
 
@@ -8,7 +8,7 @@ export const Dashboard = () =>{
         <LayoutBaseDePagina
          titulo='Página Inicial' 
          barraDeFerramentas={(
-            <FerramentasDeDetalhe/>
+            <FerramentasDeDetalhe mostrarBotaoNovo={true}/>
          )}>
             Testando
         </LayoutBaseDePagina>
