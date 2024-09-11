@@ -28,7 +28,7 @@ function StatisticsCardsComponents() {
                     <DollarSign className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                    <div className="text-2xl font-bold">$45,231.89</div>
+                    <div className="text-2xl font-bold font-oswald">$45,231.89</div>
                     <p className="text-xs text-muted-foreground">
                         +20.1% from last month
                     </p>
@@ -42,7 +42,7 @@ function StatisticsCardsComponents() {
                     <Users className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                    <div className="text-2xl font-bold">+2350</div>
+                    <div className="text-2xl font-bold font-oswald">+2350</div>
                     <p className="text-xs text-muted-foreground">
                         +180.1% from last month
                     </p>
@@ -54,7 +54,7 @@ function StatisticsCardsComponents() {
                     <CreditCard className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                    <div className="text-2xl font-bold">+12,234</div>
+                    <div className="text-2xl font-bold font-oswald">+12,234</div>
                     <p className="text-xs text-muted-foreground">
                         +19% from last month
                     </p>
@@ -66,7 +66,7 @@ function StatisticsCardsComponents() {
                     <Activity className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                    <div className="text-2xl font-bold">+573</div>
+                    <div className="text-2xl font-bold font-oswald">+573</div>
                     <p className="text-xs text-muted-foreground">
                         +201 since last hour
                     </p>

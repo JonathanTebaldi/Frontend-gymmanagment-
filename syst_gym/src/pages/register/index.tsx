@@ -43,6 +43,9 @@ function RegisterPage() {
                     <Button
                         type="submit"
                         className="w-full hover:bg-orange-600 duration-100"
+                        onClick={() => {
+                            navigate('/login')
+                        }}
                     >
                         Criar
                     </Button>

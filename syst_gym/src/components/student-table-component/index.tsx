@@ -3,7 +3,7 @@ import { Button } from "../ui/button";
 import { twMerge } from "tailwind-merge";
 import { useState } from "react";
 import { ScrollArea } from "../../components/ui/scroll-area";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import { Search, ArrowUpRight } from "lucide-react";
 import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from "../ui/table";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../ui/card";
@@ -11,6 +11,8 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../ui
 export function StudentTableComponent({ scrollAreaSize }: { scrollAreaSize?: string; }) {
     const [searchInput, setSearchInput] = useState<string>('');
     const navigate = useNavigate();
+
+    const pathname = useLocation().pathname;
 
     const list_names = [
         {
@@ -122,7 +124,7 @@ export function StudentTableComponent({ scrollAreaSize }: { scrollAreaSize?: str
                         navigate('/alunos');
                     }}
                     size="sm"
-                    className="ml-auto gap-1 hover:bg-orange-600 duration-100"
+                    className={pathname == '/alunos' ? "hidden ": "ml-auto gap-1 hover:bg-orange-600 duration-100"}
                 >
                     Ver todos
                     <ArrowUpRight className="h-4 w-4" />

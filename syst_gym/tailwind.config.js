@@ -54,7 +54,11 @@ export default {
   				'5': 'hsl(var(--chart-5))'
   			}
   		}
-  	}
+  	},
+	fontFamily: {
+		'quicksand': ['Quicksand', 'system-ui','sans-serif'],
+		'oswald': ['Oswald', 'system-ui','sans-serif']
+	}
   },
   plugins: [require("tailwindcss-animate")],
 }
