@@ -2,19 +2,32 @@ import { Label } from "@radix-ui/react-label";
 import { Input } from "../../components/ui/input";
 import { Button } from "../../components/ui/button";
 import { useNavigate } from "react-router";
+import { http } from "../../service";
 
 function LoginPage() {
     const navigate = useNavigate();
 
     async function onSubmit() {
-        navigate('/dashboard');
+        try{
+            await http.post("/auth/login", {
+                login: "email@gmail.com",
+                senha: "123"
+            })
+            .then(response => {
+                console.log(response.data)
+                navigate('/dashboard');
+            })
+        }catch(e){
+            console.error(e);
+        }
+       
     }
 
     return (
         <div className="w-full lg:grid lg:min-h-[600px] lg:grid-cols-2 min-h-[800px]">
             <div className="flex items-center justify-center">
                 <div className="mx-auto grid w-[350px] gap-6">
-                    <div className="grid gap-2 text-center">
+                    <div className="grid gap-2 text-center">go
                         <h1 className="text-3xl font-bold">Login</h1>
                         <p className="text-balance text-muted-foreground">
                             Enter your email below to login to your account

@@ -154,19 +154,12 @@ export function StudentTableComponent({ scrollAreaSize }: { scrollAreaSize?: str
                                             <Button
                                                 className="hover:bg-orange-600 duration-100"
                                                 onClick={() => {
-                                                    navigate(`/alunos/matricula/${data.id}`);
+                                                    navigate(`/alunos/form/${data.id}`);
                                                 }}
                                             >
                                                 Ver matrícula
                                             </Button>
-                                            <Button
-                                                className="hover:bg-orange-600 duration-100"
-                                                onClick={() => {
-                                                    navigate(`/alunos/${data.id}`);
-                                                }}
-                                            >
-                                                Detalhes
-                                            </Button>
+                                            
                                         </TableCell>
                                     </TableRow>
                                 );
@@ -183,19 +176,12 @@ export function StudentTableComponent({ scrollAreaSize }: { scrollAreaSize?: str
                                             <Button
                                                 className="hover:bg-orange-600 duration-100"
                                                 onClick={() => {
-                                                    navigate(`/alunos/matricula/${data.id}`);
+                                                    navigate(`/alunos/form/${data.id}`);
                                                 }}
                                             >
                                                 Ver matrícula
                                             </Button>
-                                            <Button
-                                                className="hover:bg-orange-600 duration-100"
-                                                onClick={() => {
-                                                    navigate(`/alunos/${data.id}`);
-                                                }}
-                                            >
-                                                Detalhes
-                                            </Button>
+                                
                                         </TableCell>
                                     </TableRow>
                                 );

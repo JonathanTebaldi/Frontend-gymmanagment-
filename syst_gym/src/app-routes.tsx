@@ -8,6 +8,7 @@ import {
     AlunoFormPage,
     NotFoundPage
 } from "./pages";
+import TreinosPage from "./pages/treino";
 
 function AppRoutes() {
     return (
@@ -21,6 +22,8 @@ function AppRoutes() {
                 <Route path="/alunos/:id" element={<AlunoDetailsPage />} />
                 <Route path="/alunos/form" element={<AlunoFormPage />} />
                 <Route path="/alunos/form/:id" element={<AlunoFormPage />} />
+
+                <Route path="/treino/:id" element={<TreinosPage />} />
 
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>

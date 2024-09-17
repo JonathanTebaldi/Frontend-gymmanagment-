@@ -6,7 +6,7 @@ import { Card, CardHeader, CardTitle, CardContent } from "../../components/ui/ca
 function DashboardPage() {
 
     return (
-        <PageLayoutComponent title="Dashboard">
+        <PageLayoutComponent title="Página inicial">
             <div className="flex flex-col w-full gap-4 px-4 py-2">
                 <StatisticsCardsComponents />
                 <StudentTableComponent />
