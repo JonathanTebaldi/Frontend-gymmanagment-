@@ -8,7 +8,7 @@ import { Search, ArrowUpRight } from "lucide-react";
 import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from "../ui/table";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../ui/card";
 
-export function StudentTableComponent({ scrollAreaSize }: { scrollAreaSize?: string; }) {
+export function StudentTableComponent({ scrollAreaSize, alunos }: { scrollAreaSize?: string; alunos: any[] }) {
     const [searchInput, setSearchInput] = useState<string>('');
     const navigate = useNavigate();
 
@@ -97,7 +97,10 @@ export function StudentTableComponent({ scrollAreaSize }: { scrollAreaSize?: str
         }
     ];
 
-    const filtered_names = list_names.filter(data => data.name.toLowerCase().includes(searchInput.toLowerCase()));
+
+    if (!alunos) return
+
+    const filtered_names = alunos.filter((data: any) => data.name.toLowerCase().includes(searchInput.toLowerCase()));
 
     return (
         <Card className='pb-2 h-full'>
@@ -105,7 +108,7 @@ export function StudentTableComponent({ scrollAreaSize }: { scrollAreaSize?: str
                 <div className="flex flex-col justify-center gap-2">
                     <CardTitle>Alunos</CardTitle>
                     <CardDescription>
-                        Recent transactions from your store.
+                        Alunos ativos matriculados
                     </CardDescription>
                     <div className='flex ml-2 items-center'>
                         <Search className='-mr-8 size-6' />
@@ -124,7 +127,7 @@ export function StudentTableComponent({ scrollAreaSize }: { scrollAreaSize?: str
                         navigate('/alunos');
                     }}
                     size="sm"
-                    className={pathname == '/alunos' ? "hidden ": "ml-auto gap-1 hover:bg-orange-600 duration-100"}
+                    className={pathname == '/alunos' ? "hidden " : "ml-auto gap-1 hover:bg-orange-600 duration-100"}
                 >
                     Ver todos
                     <ArrowUpRight className="h-4 w-4" />
@@ -136,7 +139,7 @@ export function StudentTableComponent({ scrollAreaSize }: { scrollAreaSize?: str
                         <TableHeader>
                             <TableRow>
                                 <TableHead>Aluno</TableHead>
-                                <TableHead>Email</TableHead>
+                                <TableHead>Celular</TableHead>
                                 <TableHead>Ação</TableHead>
                             </TableRow>
                         </TableHeader>
@@ -147,8 +150,8 @@ export function StudentTableComponent({ scrollAreaSize }: { scrollAreaSize?: str
                                         <TableCell>
                                             <div className="font-medium">{data.name}</div>
                                         </TableCell>
-                                        <TableCell>
-                                            <div className="font-medium">{data.email}</div>
+                                        <TableCell>0
+                                            <div className="font-medium">{data.celular}</div>
                                         </TableCell>
                                         <TableCell className='flex items-center gap-2'>
                                             <Button
@@ -159,18 +162,18 @@ export function StudentTableComponent({ scrollAreaSize }: { scrollAreaSize?: str
                                             >
                                                 Ver matrícula
                                             </Button>
-                                            
+
                                         </TableCell>
                                     </TableRow>
                                 );
-                            }) : list_names.map((data, index) => {
+                            }) : alunos.map((data, index) => {
                                 return (
                                     <TableRow key={index}>
                                         <TableCell>
                                             <div className="font-medium">{data.name}</div>
                                         </TableCell>
                                         <TableCell>
-                                            <div className="font-medium">{data.email}</div>
+                                            <div className="font-medium">{data.celular}</div>
                                         </TableCell>
                                         <TableCell className='flex items-center gap-2'>
                                             <Button
@@ -181,7 +184,7 @@ export function StudentTableComponent({ scrollAreaSize }: { scrollAreaSize?: str
                                             >
                                                 Ver matrícula
                                             </Button>
-                                
+
                                         </TableCell>
                                     </TableRow>
                                 );

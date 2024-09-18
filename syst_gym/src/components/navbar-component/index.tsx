@@ -8,16 +8,16 @@ function NavbarComponent() {
                 <NavigationLinkComponent icon={Home} to='/dashboard'>
                     Página Inicial
                 </NavigationLinkComponent>
-                <NavigationLinkComponent icon={ShoppingCart} to='/'>
+                <NavigationLinkComponent icon={ShoppingCart} to='/caixa'>
                     Caixa
                 </NavigationLinkComponent>
-                <NavigationLinkComponent icon={Package} to='/matriculas'>
+                <NavigationLinkComponent icon={Package} to='/matricula'>
                     Matrículas
                 </NavigationLinkComponent>
                 <NavigationLinkComponent icon={Users} to='/alunos'>
                     Alunos
                 </NavigationLinkComponent>
-                <NavigationLinkComponent icon={LineChart} to='/'>
+                <NavigationLinkComponent icon={LineChart} to='/suporte'>
                     Suporte
                 </NavigationLinkComponent>
             </nav>
