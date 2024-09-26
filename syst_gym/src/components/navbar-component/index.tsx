@@ -17,8 +17,11 @@ function NavbarComponent() {
                 <NavigationLinkComponent icon={Users} to='/alunos'>
                     Alunos
                 </NavigationLinkComponent>
-                <NavigationLinkComponent icon={LineChart} to='/suporte'>
-                    Suporte
+                <NavigationLinkComponent icon={LineChart} to='/treinos'>
+                    Treinos
+                </NavigationLinkComponent>
+                <NavigationLinkComponent icon={LineChart} to='/planos'>
+                    Planos
                 </NavigationLinkComponent>
             </nav>
         </div>

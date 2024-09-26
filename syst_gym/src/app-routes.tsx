@@ -13,6 +13,9 @@ import CaixaPage from "./pages/caixa";
 import MatriculaPage from "./pages/matriculas";
 import FrequenciaPage from "./pages/frequencia";
 import SuportePage from "./pages/suporte";
+import PagamentoPage from "./pages/pagamento";
+import ListaTreinos from "./pages/lista-treinos";
+import TreinoFormPage from "./pages/treino-form";
 
 function AppRoutes() {
     return (
@@ -28,6 +31,9 @@ function AppRoutes() {
                 <Route path="/alunos/form/:id" element={<AlunoFormPage />} />
 
                 <Route path="/treino/:id" element={<TreinosPage />} />
+                <Route path="/treinos" element={<ListaTreinos />} />
+                <Route path="/treinos/form-treino" element={<TreinoFormPage />} />
+
 
                 <Route path="/caixa" element={<CaixaPage />} />
 
@@ -37,7 +43,7 @@ function AppRoutes() {
 
                 <Route path="/suporte" element={<SuportePage />} />
 
-
+                <Route path="/pagamento" element={<PagamentoPage />} />
 
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>

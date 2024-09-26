@@ -10,6 +10,10 @@ import {
     CardFooter,
 } from "../../components/ui/card";
 import { useParams } from "react-router";
+import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "../../components/ui/dialog";
+import { Label } from "../../components/ui/label";
+import { useState } from "react";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectLabel, SelectItem } from "../../components/ui/select";
 // import { useEffect } from "react";
 
 function AlunoFormPage() {
@@ -46,15 +50,7 @@ function AlunoFormPage() {
                             <CalendarDays className='size-6' />
                             <p>Frequencia</p>
                         </Button>
-                        <Button
-                            className='flex items-center gap-2 hover:bg-orange-600 duration-100'
-                            onClick={() => {
-                                navigate(-1);
-                            }}
-                        >
-                            <UserCog className='size-6' />
-                            <p>Matricula</p>
-                        </Button>
+                        <MatriculaDialog />
                         <Button
                             className='flex items-center gap-2 hover:bg-orange-600 duration-100'
                             onClick={() => {
@@ -150,3 +146,67 @@ function AlunoFormPage() {
 }
 
 export default AlunoFormPage;
+
+
+function MatriculaDialog() {
+    const [initialValue, setInitialValue] = useState<number>(0);
+
+    const navigate = useNavigate();
+
+    return (
+        <Dialog>
+            <DialogTrigger asChild>
+                <Button
+                    className='flex items-center gap-2 hover:bg-orange-600 duration-100'
+                >
+                    <UserCog />
+                    Matrícula
+                </Button>
+            </DialogTrigger>
+            <DialogContent className="sm:max-w-[425px]">
+                <DialogHeader>
+                    <DialogTitle>Nova Matrícula</DialogTitle>
+                </DialogHeader>
+                <div className="grid gap-4 py-4">
+                    <div className="flex flex-col justify-center items-start gap-4">
+                        <Label htmlFor="value" className="">
+                            Escolha a modalidade
+                        </Label>
+                        <Select
+                            onValueChange={(event: any) => {
+                                setInitialValue(Number(event));
+                            }}
+                        >
+                            <SelectTrigger className="w-[180px]">
+                                <SelectValue placeholder="Modalidades" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    <SelectLabel>Modalidades</SelectLabel>
+                                    <SelectItem value="1">Musculação</SelectItem>
+                                    <SelectItem value="2">MuaiTai</SelectItem>
+                                    <SelectItem value="3">Boxe</SelectItem>
+                                    <SelectItem value="4">Judô</SelectItem>
+                                    <SelectItem value="5">Funcional</SelectItem>
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
+                    </div>
+                </div>
+                <DialogFooter>
+                    <DialogClose asChild>
+                        <Button
+                            type="submit"
+                            disabled={initialValue <= 0}
+                            onClick={() => {
+                                navigate("/pagamento");
+                            }}
+                        >
+                            Ir para pagamento
+                        </Button>
+                    </DialogClose>
+                </DialogFooter>
+            </DialogContent>
+        </Dialog>
+    )
+}
