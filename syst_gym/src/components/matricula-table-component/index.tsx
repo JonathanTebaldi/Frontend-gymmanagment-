@@ -8,7 +8,7 @@ import { Search, ArrowUpRight } from "lucide-react";
 import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from "../ui/table";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../ui/card";
 
-export function StudentTableComponent({ scrollAreaSize, alunos }: { scrollAreaSize?: string; alunos: any[] }) {
+export function MatriculaTableComponent({ scrollAreaSize, alunos }: { scrollAreaSize?: string; alunos: any[] }) {
     const [searchInput, setSearchInput] = useState<string>('');
     const navigate = useNavigate();
 
@@ -140,6 +140,8 @@ export function StudentTableComponent({ scrollAreaSize, alunos }: { scrollAreaSi
                             <TableRow>
                                 <TableHead>Aluno</TableHead>
                                 <TableHead>Celular</TableHead>
+                                <TableHead>Ativo</TableHead>
+                                <TableHead>Modalidade</TableHead>
                                 <TableHead>Ação</TableHead>
                             </TableRow>
                         </TableHeader>
@@ -152,6 +154,12 @@ export function StudentTableComponent({ scrollAreaSize, alunos }: { scrollAreaSi
                                         </TableCell>
                                         <TableCell>
                                             <div className="font-medium">{data.celular}</div>
+                                        </TableCell>
+                                        <TableCell>
+                                            <div className="font-medium">{data.ativo}</div>
+                                        </TableCell>
+                                        <TableCell>
+                                            <div className="font-medium">{data.modalidade}</div>
                                         </TableCell>
                                         <TableCell className='flex items-center gap-2'>
                                             <Button
@@ -174,6 +182,12 @@ export function StudentTableComponent({ scrollAreaSize, alunos }: { scrollAreaSi
                                         </TableCell>
                                         <TableCell>
                                             <div className="font-medium">{data.celular}</div>
+                                        </TableCell>
+                                        <TableCell>
+                                            <div className="font-medium">{data.ativo}</div>
+                                        </TableCell>
+                                        <TableCell>
+                                            <div className="font-medium">{data.modalidade}</div>
                                         </TableCell>
                                         <TableCell className='flex items-center gap-2'>
                                             <Button

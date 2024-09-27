@@ -16,6 +16,7 @@ import SuportePage from "./pages/suporte";
 import PagamentoPage from "./pages/pagamento";
 import ListaTreinos from "./pages/lista-treinos";
 import TreinoFormPage from "./pages/treino-form";
+import PlanosPage from "./pages/plano";
 
 function AppRoutes() {
     return (
@@ -33,6 +34,8 @@ function AppRoutes() {
                 <Route path="/treino/:id" element={<TreinosPage />} />
                 <Route path="/treinos" element={<ListaTreinos />} />
                 <Route path="/treinos/form-treino" element={<TreinoFormPage />} />
+
+                <Route path="/planos" element={<PlanosPage />}/>
 
 
                 <Route path="/caixa" element={<CaixaPage />} />

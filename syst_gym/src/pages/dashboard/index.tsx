@@ -2,14 +2,34 @@ import { PageLayoutComponent } from "../../components/page-layout-component";
 import { StudentTableComponent } from "../../components/student-table-component";
 import { Activity, CreditCard, DollarSign, Users } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "../../components/ui/card";
+import { useEffect, useState } from "react";
+import { http } from "../../service";
 
 function DashboardPage() {
+    const [alunos, setAlunos] = useState<any[]>([]);
+
+    async function listarTodos() {
+        try {
+            await http.get(`/aluno`)
+                .then(res => {
+                    setAlunos(res.data)
+                    console.log(res.data);
+                });
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    useEffect(() => {
+        listarTodos()
+    }, [])
+
 
     return (
         <PageLayoutComponent title="Página inicial">
             <div className="flex flex-col w-full gap-4 px-4 py-2">
-                <StatisticsCardsComponents />
-                <StudentTableComponent />
+                <StatisticsCardsComponents total={alunos?.content?.length} />
+                <StudentTableComponent scrollAreaSize="h-[470px]" alunos={alunos.content}  />
             </div>
         </PageLayoutComponent >
     );
@@ -17,7 +37,7 @@ function DashboardPage() {
 
 export default DashboardPage;
 
-function StatisticsCardsComponents() {
+function StatisticsCardsComponents({total} : {total:number} ) {
     return (
         <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-4">
             <Card x-chunk="dashboard-01-chunk-0">
@@ -54,7 +74,7 @@ function StatisticsCardsComponents() {
                     <CreditCard className="h-4 w-4 text-muted-foreground" />
                 </CardHeader>
                 <CardContent>
-                    <div className="text-2xl font-bold font-oswald">+12,234</div>
+                    <div className="text-2xl font-bold font-oswald">{total}</div>
                     <p className="text-xs text-muted-foreground">
                         +19% from last month
                     </p>

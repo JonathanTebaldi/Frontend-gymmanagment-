@@ -5,6 +5,7 @@ import { Button } from "../../components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { http } from "../../service";
 import { useEffect, useState } from "react";
+import { MatriculaTableComponent } from "../../components/matricula-table-component";
 
 function MatriculaPage(){
     const navigate = useNavigate();
@@ -32,7 +33,7 @@ function MatriculaPage(){
             <div className="flex flex-col w-full gap-2 px-4 py-2">
                 <div className='flex items-center justify-end w-full'>
                 </div>
-                <StudentTableComponent scrollAreaSize="h-[470px]" alunos={alunos.content} />
+                <MatriculaTableComponent scrollAreaSize="h-[470px]" alunos={alunos.content} />
             </div>
         </PageLayoutComponent>
 

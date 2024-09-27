@@ -34,8 +34,6 @@ function PagamentoPage() {
                                                 <SelectItem value="1">Pix</SelectItem>
                                                 <SelectItem value="2">Crédito</SelectItem>
                                                 <SelectItem value="3">Débito</SelectItem>
-                                                <SelectItem value="4">Judô</SelectItem>
-                                                <SelectItem value="5">Funcional</SelectItem>
                                             </SelectGroup>
                                         </SelectContent>
                                     </Select>
