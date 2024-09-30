@@ -22,35 +22,6 @@ function TreinosPage() {
                         <ArrowLeft className='size-6' />
                         <p>Voltar</p>
                     </Button>
-                    <div className="flex items-center w-full justify-end gap-1">
-                        <Button
-                            className='flex items-center gap-2 hover:bg-orange-600 duration-100'
-                            onClick={() => {
-                                navigate(-1);
-                            }}
-                        >
-                            <CalendarDays className='size-6' />
-                            <p>Frequencia</p>
-                        </Button>
-                        <Button
-                            className='flex items-center gap-2 hover:bg-orange-600 duration-100'
-                            onClick={() => {
-                                navigate(-1);
-                            }}
-                        >
-                            <UserCog className='size-6' />
-                            <p>Matricula</p>
-                        </Button>
-                        <Button
-                            className='flex items-center gap-2 hover:bg-orange-600 duration-100'
-                            onClick={() => {
-                                navigate("/treino/:id");
-                            }}
-                        >
-                            <BicepsFlexed className='size-6' />
-                            <p>Treinos</p>
-                        </Button>
-                    </div>
                 </div>
                 <Card className="bg-white dark:bg-gray-900">
                     <CardHeader>
@@ -91,7 +62,7 @@ function TreinosPage() {
                     <CardFooter className='flex items-center justify-end'>
                         <Button
                             onClick={() => {
-                                alert("Aluno CADASTRADO com sucesso.");
+                                alert("Treino CADASTRADO com sucesso.");
                                 navigate(-1);
                             }}
                         >

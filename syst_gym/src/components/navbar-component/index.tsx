@@ -23,6 +23,9 @@ function NavbarComponent() {
                 <NavigationLinkComponent icon={LineChart} to='/planos'>
                     Planos
                 </NavigationLinkComponent>
+                <NavigationLinkComponent icon={Users} to='/funcionarios'>
+                    Funcionarios
+                </NavigationLinkComponent>
             </nav>
         </div>
     );

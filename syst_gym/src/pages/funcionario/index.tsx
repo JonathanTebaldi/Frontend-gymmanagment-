@@ -1,3 +1,4 @@
+
 import { Button } from "../../components/ui/button";
 import { PlusCircle } from "lucide-react";
 import { PageLayoutComponent } from "../../components/page-layout-component";
@@ -5,16 +6,17 @@ import { StudentTableComponent } from "../../components/student-table-component"
 import { useNavigate } from "react-router";
 import { http } from "../../service";
 import { useEffect, useState } from "react";
+import { FuncionarioTableComponent } from "../../components/funcionario-table-component";
 
-function PlanosPage() {
+function FuncionariosPage() {
     const navigate = useNavigate();
-    const [alunos, setAlunos] = useState<any[]>([]);
+    const [funcionarios, setFuncionarios] = useState<any[]>([]);
 
-    async function listarTodos() {
+    async function listar() {
         try {
-            await http.get(`/aluno`)
+            await http.get(`/funcionario`)
                 .then(res => {
-                    setAlunos(res.data)
+                    setFuncionarios(res.data)
                     console.log(res.data);
                 });
         } catch (e) {
@@ -23,27 +25,27 @@ function PlanosPage() {
     }
 
     useEffect(() => {
-        listarTodos()
+        listar()
     }, [])
 
     return (
-        <PageLayoutComponent title="Alunos">
+        <PageLayoutComponent title="Funcionários">
             <div className="flex flex-col w-full gap-2 px-4 py-2">
                 <div className='flex items-center justify-end w-full'>
                     <Button
                         className='flex items-center gap-2 hover:bg-orange-600 duration-100'
                         onClick={() => {
-                            navigate('form');
+                            navigate('/funcionarios-form');
                         }}
                     >
                         <PlusCircle className='size-6' />
                         <p>Cadastro</p>
                     </Button>
                 </div>
-                <StudentTableComponent scrollAreaSize="h-[470px]" alunos={alunos.content} />
+                <FuncionarioTableComponent scrollAreaSize="h-[470px]" alunos={funcionarios.content} />
             </div>
         </PageLayoutComponent>
     );
 }
 
-export default PlanosPage;
+export default FuncionariosPage;

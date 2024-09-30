@@ -17,6 +17,8 @@ import PagamentoPage from "./pages/pagamento";
 import ListaTreinos from "./pages/lista-treinos";
 import TreinoFormPage from "./pages/treino-form";
 import PlanosPage from "./pages/plano";
+import FuncionarioPage from "./pages/funcionario";
+import FuncionarioFormPage from "./pages/funcionario-form";
 
 function AppRoutes() {
     return (
@@ -36,6 +38,9 @@ function AppRoutes() {
                 <Route path="/treinos/form-treino" element={<TreinoFormPage />} />
 
                 <Route path="/planos" element={<PlanosPage />}/>
+
+                <Route path="/funcionarios" element={<FuncionarioPage />} />
+                <Route path="/funcionarios-form" element={<FuncionarioFormPage />} />
 
 
                 <Route path="/caixa" element={<CaixaPage />} />

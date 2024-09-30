@@ -8,7 +8,7 @@ import { Search, ArrowUpRight } from "lucide-react";
 import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from "../ui/table";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../ui/card";
 
-export function MatriculaTableComponent({ scrollAreaSize, alunos }: { scrollAreaSize?: string; alunos: any[] }) {
+export function FuncionarioTableComponent({ scrollAreaSize, alunos }: { scrollAreaSize?: string; alunos: any[] }) {
     const [searchInput, setSearchInput] = useState<string>('');
     const navigate = useNavigate();
 
@@ -106,9 +106,9 @@ export function MatriculaTableComponent({ scrollAreaSize, alunos }: { scrollArea
         <Card className='pb-2 h-full'>
             <CardHeader className="flex flex-row items-center">
                 <div className="flex flex-col justify-center gap-2">
-                    <CardTitle>Alunos</CardTitle>
+                    <CardTitle>Funcionários</CardTitle>
                     <CardDescription>
-                        Alunos ativos matriculados
+                        Todos funcionários
                     </CardDescription>
                     <div className='flex ml-2 items-center'>
                         <Search className='-mr-8 size-6' />
@@ -124,10 +124,10 @@ export function MatriculaTableComponent({ scrollAreaSize, alunos }: { scrollArea
                 </div>
                 <Button
                     onClick={() => {
-                        navigate('/alunos');
+                        navigate('/funcionarios');
                     }}
                     size="sm"
-                    className={pathname == '/alunos' ? "hidden " : "ml-auto gap-1 hover:bg-orange-600 duration-100"}
+                    className={pathname == '/funcionarios' ? "hidden " : "ml-auto gap-1 hover:bg-orange-600 duration-100"}
                 >
                     Ver todos
                     <ArrowUpRight className="h-4 w-4" />
@@ -138,10 +138,8 @@ export function MatriculaTableComponent({ scrollAreaSize, alunos }: { scrollArea
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead>Aluno</TableHead>
-                                <TableHead>Celular</TableHead>
-                                <TableHead>Ativo</TableHead>
-                                <TableHead>Modalidade</TableHead>
+                                <TableHead>Funcionario</TableHead>
+                                <TableHead>Cargo</TableHead>
                                 <TableHead>Ação</TableHead>
                             </TableRow>
                         </TableHeader>
@@ -153,23 +151,18 @@ export function MatriculaTableComponent({ scrollAreaSize, alunos }: { scrollArea
                                             <div className="font-medium">{data.nome}</div>
                                         </TableCell>
                                         <TableCell>
-                                            <div className="font-medium">{data.celular}</div>
-                                        </TableCell>
-                                        <TableCell>
-                                            <div className="font-medium">{data.ativo}</div>
-                                        </TableCell>
-                                        <TableCell>
-                                            <div className="font-medium">{data.modalidade}</div>
+                                            <div className="font-medium">{data.cargo}</div>
                                         </TableCell>
                                         <TableCell className='flex items-center gap-2'>
                                             <Button
                                                 className="hover:bg-orange-600 duration-100"
                                                 onClick={() => {
-                                                    navigate(`/alunos/form/${data.id}`);
+                                                    navigate(`/funcionarios/funcionarios-form/${data.id}`);
                                                 }}
                                             >
-                                                Ver matrícula
+                                                Ver mais
                                             </Button>
+
                                         </TableCell>
                                     </TableRow>
                                 );
@@ -180,23 +173,18 @@ export function MatriculaTableComponent({ scrollAreaSize, alunos }: { scrollArea
                                             <div className="font-medium">{data.name}</div>
                                         </TableCell>
                                         <TableCell>
-                                            <div className="font-medium">{data.celular}</div>
-                                        </TableCell>
-                                        <TableCell>
-                                            <div className="font-medium">{data.ativo}</div>
-                                        </TableCell>
-                                        <TableCell>
-                                            <div className="font-medium">{data.modalidade}</div>
+                                            <div className="font-medium">{data.cargo}</div>
                                         </TableCell>
                                         <TableCell className='flex items-center gap-2'>
                                             <Button
                                                 className="hover:bg-orange-600 duration-100"
                                                 onClick={() => {
-                                                    navigate(`/alunos/form/${data.id}`);
+                                                    navigate(`/funcionarios/funcionarios-form/${data.id}`);
                                                 }}
                                             >
-                                                Ver matrícula
+                                                Ver mais
                                             </Button>
+
                                         </TableCell>
                                     </TableRow>
                                 );
