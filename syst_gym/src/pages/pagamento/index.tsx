@@ -17,9 +17,16 @@ function PagamentoPage() {
                         </CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <form action="#">
+                        <form action="#" className="flex items-start gap-16">
+                            <div className="flex flex-col justify-center items-start">
+                                <p className="font-medium">Valor:</p>
+                                <span className="font-bold text-2xl">
+                                    {Number(128).toLocaleString("pt-BR", { currency: "BRL", style: "currency" })}
+                                </span>
+                            </div>
                             <div className="grid gap-4 sm:grid-cols-2 sm:gap-6">
                                 <div className="sm:col-span-2">
+                                    <p className="font-medium">Forma de Pagamento:</p>
                                     <Select
                                         onValueChange={(event: any) => {
                                             setPaymentForm(String(event));

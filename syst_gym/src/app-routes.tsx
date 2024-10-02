@@ -19,6 +19,8 @@ import TreinoFormPage from "./pages/treino-form";
 import PlanosPage from "./pages/plano";
 import FuncionarioPage from "./pages/funcionario";
 import FuncionarioFormPage from "./pages/funcionario-form";
+import PlanoFormPage from "./pages/plano-form";
+import TreinoPage from "./pages/treino";
 
 function AppRoutes() {
     return (
@@ -33,14 +35,15 @@ function AppRoutes() {
                 <Route path="/alunos/form" element={<AlunoFormPage />} />
                 <Route path="/alunos/form/:id" element={<AlunoFormPage />} />
 
-                <Route path="/treino/:id" element={<TreinosPage />} />
+                <Route path="/treino/:id" element={<TreinoPage />} />
                 <Route path="/treinos" element={<ListaTreinos />} />
                 <Route path="/treinos/form-treino" element={<TreinoFormPage />} />
 
                 <Route path="/planos" element={<PlanosPage />}/>
+                {/* <Route path="/planos/planos-form/:id" element={<PlanoFormPage />}/> */}
 
                 <Route path="/funcionarios" element={<FuncionarioPage />} />
-                <Route path="/funcionarios-form" element={<FuncionarioFormPage />} />
+                <Route path="/funcionarios/funcionarios-form/:id" element={<FuncionarioFormPage />} />
 
 
                 <Route path="/caixa" element={<CaixaPage />} />

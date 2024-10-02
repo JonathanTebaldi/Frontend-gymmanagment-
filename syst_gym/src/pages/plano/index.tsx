@@ -5,6 +5,7 @@ import { StudentTableComponent } from "../../components/student-table-component"
 import { useNavigate } from "react-router";
 import { http } from "../../service";
 import { useEffect, useState } from "react";
+import { PlanosTableComponent } from "../../components/plano-table-component";
 
 function PlanosPage() {
     const navigate = useNavigate();
@@ -12,7 +13,7 @@ function PlanosPage() {
 
     async function listarTodos() {
         try {
-            await http.get(`/aluno`)
+            await http.get(`/plano`)
                 .then(res => {
                     setAlunos(res.data)
                     console.log(res.data);
@@ -27,20 +28,20 @@ function PlanosPage() {
     }, [])
 
     return (
-        <PageLayoutComponent title="Alunos">
+        <PageLayoutComponent title="Planos">
             <div className="flex flex-col w-full gap-2 px-4 py-2">
                 <div className='flex items-center justify-end w-full'>
                     <Button
                         className='flex items-center gap-2 hover:bg-orange-600 duration-100'
                         onClick={() => {
-                            navigate('form');
+                            navigate('/ planos-form');
                         }}
                     >
                         <PlusCircle className='size-6' />
                         <p>Cadastro</p>
                     </Button>
                 </div>
-                <StudentTableComponent scrollAreaSize="h-[470px]" alunos={alunos.content} />
+                <PlanosTableComponent scrollAreaSize="h-[470px]" alunos={alunos.content} />
             </div>
         </PageLayoutComponent>
     );

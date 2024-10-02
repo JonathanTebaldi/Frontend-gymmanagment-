@@ -4,6 +4,7 @@ import { Activity, CreditCard, DollarSign, Users } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "../../components/ui/card";
 import { useEffect, useState } from "react";
 import { http } from "../../service";
+import { GraficoComponent } from "../../components/grafico-component";
 
 function DashboardPage() {
     const [alunos, setAlunos] = useState<any[]>([]);
@@ -29,7 +30,7 @@ function DashboardPage() {
         <PageLayoutComponent title="Página inicial">
             <div className="flex flex-col w-full gap-4 px-4 py-2">
                 <StatisticsCardsComponents total={alunos?.content?.length} />
-                <StudentTableComponent scrollAreaSize="h-[470px]" alunos={alunos.content}  />
+                <GraficoComponent />
             </div>
         </PageLayoutComponent >
     );

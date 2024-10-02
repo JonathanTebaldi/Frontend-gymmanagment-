@@ -17,7 +17,8 @@ import { Select, SelectTrigger, SelectValue, SelectContent, SelectGroup, SelectL
 import { http } from "../../service";
 
 function AlunoFormPage() {
-    const [ aluno, setAluno] = useState();
+    const [alunoData, setAlunoData] = useState();
+    const [aluno, setAluno] = useState();
     const { id } = useParams();
 
     const navigate = useNavigate();
@@ -35,6 +36,38 @@ function AlunoFormPage() {
         }
     }
 
+    async function cadastrar(data: any, alunoId?: string) {
+        const alunoNovo = {
+            nome: data.nome,
+            cpf: data.cpf,
+            celular: data.celular,
+            sexo: data.sexo,
+            dataNascimento: new Date(data.dataNascimento).toISOString().split('.')[0],
+            endereco: {
+                bairro: data.bairro,
+                numero: data.numero,
+                cidade: data.cidade,
+                uf: data.uf
+            }
+        }
+        // console.log(alunoNovo.dataNascimento)
+        console.log(alunoNovo)
+        try {
+            if (!alunoId) {
+                http.post("/aluno", alunoNovo)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+            } else {
+                http.put("/aluno", alunoNovo)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    }
 
     useEffect(() => {
         if (id != null) {
@@ -91,55 +124,91 @@ function AlunoFormPage() {
                                     <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Nome
                                     </label>
-                                    <input value={aluno?.nome} type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o nome" />
+                                    <input onChange={(e) => {
+                                        setAlunoData(prev => {
+                                            return { ...prev, nome: e.target.value }
+                                        });
+                                    }} value={aluno?.nome} type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o nome" />
                                 </div>
                                 <div className="w-full">
                                     <label htmlFor="brand" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         CPF
                                     </label>
-                                    <input value={aluno?.cpf} type="text" name="brand" id="brand" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o cpf" />
+                                    <input onChange={(e) => {
+                                        setAlunoData(prev => {
+                                            return { ...prev, cpf: e.target.value }
+                                        });
+                                    }} value={aluno?.cpf} type="text" name="brand" id="brand" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o cpf" />
                                 </div>
                                 <div className="w-full">
                                     <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Celular
                                     </label>
-                                    <input value={aluno?.celular} name="price" id="price" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o celular" />
+                                    <input onChange={(e) => {
+                                        setAlunoData(prev => {
+                                            return { ...prev, celular: e.target.value }
+                                        });
+                                    }} value={aluno?.celular} name="price" id="price" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o celular" />
                                 </div>
                                 <div>
                                     <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Sexo
                                     </label>
-                                    <input value={aluno?.sexo} name="price" id="price" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o sexo" />
+                                    <input onChange={(e) => {
+                                        setAlunoData(prev => {
+                                            return { ...prev, sexo: e.target.value }
+                                        });
+                                    }} value={aluno?.sexo} name="price" id="price" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o sexo" />
                                 </div>
                                 <div>
                                     <label htmlFor="item-weight" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Data de Nascimento
                                     </label>
-                                    <input value={aluno?.dataNascimento} name="item-weight" id="item-weight" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite a data de nascimento" />
+                                    <input onChange={(e) => {
+                                        setAlunoData(prev => {
+                                            return { ...prev, dataNascimento: e.target.value }
+                                        });
+                                    }} value={aluno?.dataNascimento} name="item-weight" id="item-weight" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite a data de nascimento" />
                                 </div>
                                 <div>
                                     <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Bairro
                                     </label>
-                                    <input value={aluno?.endereco?.bairro} name="price" id="price" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o bairro" />
+                                    <input onChange={(e) => {
+                                        setAlunoData(prev => {
+                                            return { ...prev, bairro: e.target.value }
+                                        });
+                                    }} value={aluno?.endereco?.bairro} name="price" id="price" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o bairro" />
                                 </div>
                                 <div>
                                     <label htmlFor="item-weight" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Numero
                                     </label>
-                                    <input value={aluno?.endereco?.numero} name="item-weight" id="item-weight" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o numero" />
+                                    <input onChange={(e) => {
+                                        setAlunoData(prev => {
+                                            return { ...prev, numero: e.target.value }
+                                        });
+                                    }} value={aluno?.endereco?.numero} name="item-weight" id="item-weight" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o numero" />
                                 </div>
                                 <div>
                                     <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Cidade
                                     </label>
-                                    <input value={aluno?.endereco?.cidade} name="price" id="price" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite a cidade" />
+                                    <input onChange={(e) => {
+                                        setAlunoData(prev => {
+                                            return { ...prev, cidade: e.target.value }
+                                        });
+                                    }} value={aluno?.endereco?.cidade} name="price" id="price" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite a cidade" />
                                 </div>
                                 <div>
                                     <label htmlFor="item-weight" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         UF
                                     </label>
-                                    <input value={aluno?.endereco?.uf} name="item-weight" id="item-weight" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o UF" />
+                                    <input onChange={(e) => {
+                                        setAlunoData(prev => {
+                                            return { ...prev, uf: e.target.value }
+                                        });
+                                    }} value={aluno?.endereco?.uf} name="item-weight" id="item-weight" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o UF" />
                                 </div>
                             </div>
                         </form>
@@ -147,8 +216,9 @@ function AlunoFormPage() {
                     <CardFooter className='flex items-center justify-end'>
                         <Button
                             onClick={() => {
-                                alert("Aluno CADASTRADO com sucesso.");
-                                navigate(-1);
+                                // alert("Aluno CADASTRADO com sucesso.");
+                                // navigate(-1);
+                                cadastrar(alunoData, id);
                             }}
                         >
                             {id ? 'Salvar alterações' : 'Cadastrar'}

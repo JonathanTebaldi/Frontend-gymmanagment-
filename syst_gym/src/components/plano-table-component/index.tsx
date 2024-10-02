@@ -8,7 +8,7 @@ import { Search, ArrowUpRight } from "lucide-react";
 import { TableHeader, TableRow, TableHead, TableBody, TableCell, Table } from "../ui/table";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../ui/card";
 
-export function FuncionarioTableComponent({ scrollAreaSize, alunos }: { scrollAreaSize?: string; alunos: any[] }) {
+export function PlanosTableComponent({ scrollAreaSize, alunos }: { scrollAreaSize?: string; alunos: any[] }) {
     const [searchInput, setSearchInput] = useState<string>('');
     const navigate = useNavigate();
 
@@ -22,9 +22,9 @@ export function FuncionarioTableComponent({ scrollAreaSize, alunos }: { scrollAr
         <Card className='pb-2 h-full'>
             <CardHeader className="flex flex-row items-center">
                 <div className="flex flex-col justify-center gap-2">
-                    <CardTitle>Funcionários</CardTitle>
+                    <CardTitle>Planos</CardTitle>
                     <CardDescription>
-                        Todos funcionários
+                        Todos planos
                     </CardDescription>
                     <div className='flex ml-2 items-center'>
                         <Search className='-mr-8 size-6' />
@@ -40,10 +40,10 @@ export function FuncionarioTableComponent({ scrollAreaSize, alunos }: { scrollAr
                 </div>
                 <Button
                     onClick={() => {
-                        navigate('/funcionarios');
+                        navigate('/planos');
                     }}
                     size="sm"
-                    className={pathname == '/funcionarios' ? "hidden " : "ml-auto gap-1 hover:bg-orange-600 duration-100"}
+                    className={pathname == '/planos' ? "hidden " : "ml-auto gap-1 hover:bg-orange-600 duration-100"}
                 >
                     Ver todos
                     <ArrowUpRight className="h-4 w-4" />
@@ -54,8 +54,9 @@ export function FuncionarioTableComponent({ scrollAreaSize, alunos }: { scrollAr
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead>Funcionario</TableHead>
-                                <TableHead>Cargo</TableHead>
+                                <TableHead>Plano</TableHead>
+                                <TableHead>Modalidades</TableHead>
+                                <TableHead>Preço</TableHead>
                                 <TableHead>Ação</TableHead>
                             </TableRow>
                         </TableHeader>
@@ -67,16 +68,19 @@ export function FuncionarioTableComponent({ scrollAreaSize, alunos }: { scrollAr
                                             <div className="font-medium">{data.nome}</div>
                                         </TableCell>
                                         <TableCell>
-                                            <div className="font-medium">{data.cargo}</div>
+                                            <div className="font-medium">{data.modalidades}</div>
+                                        </TableCell>
+                                        <TableCell>
+                                            <div className="font-medium">{data.preco}</div>
                                         </TableCell>
                                         <TableCell className='flex items-center gap-2'>
                                             <Button
                                                 className="hover:bg-orange-600 duration-100"
                                                 onClick={() => {
-                                                    navigate(`/funcionarios/funcionarios-form/${data.id}`);
+                                                    navigate(`/alunos/form/${data.id}`);
                                                 }}
                                             >
-                                                Ver mais
+                                                Ver plano
                                             </Button>
 
                                         </TableCell>
@@ -86,19 +90,22 @@ export function FuncionarioTableComponent({ scrollAreaSize, alunos }: { scrollAr
                                 return (
                                     <TableRow key={index}>
                                         <TableCell>
-                                            <div className="font-medium">{data.name}</div>
+                                            <div className="font-medium">{data.nome}</div>
                                         </TableCell>
                                         <TableCell>
-                                            <div className="font-medium">{data.cargo}</div>
+                                            <div className="font-medium">{data.modalidades}</div>
+                                        </TableCell>
+                                        <TableCell>
+                                            <div className="font-medium">{data.preco}</div>
                                         </TableCell>
                                         <TableCell className='flex items-center gap-2'>
                                             <Button
                                                 className="hover:bg-orange-600 duration-100"
                                                 onClick={() => {
-                                                    navigate(`/funcionarios/funcionarios-form/${data.id}`);
+                                                    navigate(`/planos/planos-form/${data.id}`);
                                                 }}
                                             >
-                                                Ver mais
+                                                Ver matrícula
                                             </Button>
 
                                         </TableCell>

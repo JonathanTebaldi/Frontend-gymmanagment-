@@ -31,7 +31,6 @@ function FuncionarioFormPage() {
         }
     }
 
-
     useEffect(() => {
         if (id != null) {
             listar();
