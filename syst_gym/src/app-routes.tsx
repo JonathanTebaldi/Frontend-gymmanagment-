@@ -38,12 +38,14 @@ function AppRoutes() {
                 <Route path="/treino/:id" element={<TreinoPage />} />
                 <Route path="/treinos" element={<ListaTreinos />} />
                 <Route path="/treinos/form-treino" element={<TreinoFormPage />} />
+                <Route path="/treinos/form-treino/:id" element={<TreinoFormPage />} />
 
                 <Route path="/planos" element={<PlanosPage />}/>
                 {/* <Route path="/planos/planos-form/:id" element={<PlanoFormPage />}/> */}
 
                 <Route path="/funcionarios" element={<FuncionarioPage />} />
                 <Route path="/funcionarios/funcionarios-form/:id" element={<FuncionarioFormPage />} />
+                <Route path="/funcionarios/funcionarios-form" element={<FuncionarioFormPage />} />
 
 
                 <Route path="/caixa" element={<CaixaPage />} />

@@ -1,7 +1,6 @@
 import { Button } from "../../components/ui/button";
 import { PlusCircle } from "lucide-react";
 import { PageLayoutComponent } from "../../components/page-layout-component";
-import { StudentTableComponent } from "../../components/student-table-component";
 import { useNavigate } from "react-router";
 import { http } from "../../service";
 import { useEffect, useState } from "react";
@@ -41,7 +40,7 @@ function TreinoPage() {
                         <p>Cadastro</p>
                     </Button>
                 </div>
-                <TreinoTableComponent scrollAreaSize="h-[470px]" alunos={treinos.content} />
+                <TreinoTableComponent scrollAreaSize="h-[470px]" alunos={treinos} />
             </div>
         </PageLayoutComponent>
     );

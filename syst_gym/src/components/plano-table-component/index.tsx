@@ -105,7 +105,7 @@ export function PlanosTableComponent({ scrollAreaSize, alunos }: { scrollAreaSiz
                                                     navigate(`/planos/planos-form/${data.id}`);
                                                 }}
                                             >
-                                                Ver matrícula
+                                                Ver plano
                                             </Button>
 
                                         </TableCell>

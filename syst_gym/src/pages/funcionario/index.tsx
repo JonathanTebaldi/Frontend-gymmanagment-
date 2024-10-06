@@ -35,7 +35,7 @@ function FuncionariosPage() {
                     <Button
                         className='flex items-center gap-2 hover:bg-orange-600 duration-100'
                         onClick={() => {
-                            navigate('/funcionarios-form');
+                            navigate('/funcionarios/funcionarios-form');
                         }}
                     >
                         <PlusCircle className='size-6' />

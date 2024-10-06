@@ -4,6 +4,8 @@ import { StudentTableComponent } from "../../components/student-table-component"
 import { Button } from "../../components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { http } from "../../service";
+import { TreinoTableComponent } from "../../components/treino-table-component";
 
 
 
@@ -42,11 +44,10 @@ function ListaTreinos(){
                             <p>Cadastro</p>
                         </Button>
                     </div>
-                    <StudentTableComponent scrollAreaSize="h-[470px]" alunos={treinos.content} />
+                    <TreinoTableComponent scrollAreaSize="h-[470px]" alunos={treinos} />
                 </div>
             </PageLayoutComponent>
         );
 }
-
 
 export default ListaTreinos;

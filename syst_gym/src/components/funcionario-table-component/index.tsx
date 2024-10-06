@@ -61,6 +61,7 @@ export function FuncionarioTableComponent({ scrollAreaSize, alunos }: { scrollAr
                         </TableHeader>
                         <TableBody>
                             {filtered_names.length > 0 ? filtered_names.map((data, index) => {
+                                console.log(data)
                                 return (
                                     <TableRow key={index}>
                                         <TableCell>

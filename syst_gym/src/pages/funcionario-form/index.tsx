@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { http } from "../../service";
 
 function FuncionarioFormPage() {
-    const [ funcionario, setFuncionario] = useState();
+    const [funcionarioData, setFuncionarioData] = useState();
     const { id } = useParams();
 
     const navigate = useNavigate();
@@ -23,15 +23,42 @@ function FuncionarioFormPage() {
         try {
             await http.get(`/funcionario/${id}`)
                 .then(res => {
-                    setFuncionario(res.data)
-                    console.log(res.data);
+                    setFuncionarioData(res.data)
                 });
         } catch (e) {
             console.error(e)
         }
     }
 
+
+    async function cadastrar(data: any, funcionarioId?: string) {
+        const funcionarioNovo = {
+                nome : data.nome,
+                senha : data.senha,
+                cargo : data.cargo
+            }
+        // console.log(alunoNovo.dataNascimento)
+        console.log(funcionarioNovo)
+        try {
+            if (!funcionarioId) {
+                http.post("/funcionario", funcionarioNovo)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+            } else {
+                http.put("/funcionario", funcionarioNovo)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+
     useEffect(() => {
+        console.log(funcionarioData)
         if (id != null) {
             listar();
         }
@@ -66,19 +93,36 @@ function FuncionarioFormPage() {
                                     <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Nome
                                     </label>
-                                    <input value={funcionario?.nome} type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o nome" />
+                                    <input 
+                                    onChange={(e) => {
+                                        setFuncionarioData((prev: any) => {
+                                            return { ...prev, nome: e.target.value }
+                                        });
+                                    }}
+                                    value={funcionarioData?.nome} type="text" name="name" id="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o nome" />
                                 </div>
                                 <div className="w-full">
                                     <label htmlFor="brand" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Senha
                                     </label>
-                                    <input value={funcionario?.senha} type="text" name="brand" id="brand" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite a senha" />
+                                    <input 
+                                        onChange={(e) => {
+                                            setFuncionarioData((prev: any) => {
+                                                return { ...prev, senha: e.target.value }
+                                            });
+                                        }} value={funcionarioData?.senha} type="text" name="brand" id="brand" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite a senha" />
                                 </div>
                                 <div className="w-full">
                                     <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                                         Cargo
                                     </label>
-                                    <input value={funcionario?.cargo} name="price" id="price" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o cargo" />
+                                    <input 
+                                    onChange={(e) => {
+                                        setFuncionarioData((prev: any) => {
+                                            return { ...prev, cargo: e.target.value }
+                                        });
+                                    }}
+                                    value={funcionarioData?.cargo} name="price" id="price" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Digite o cargo" />
                                 </div> 
                             </div>
                         </form>
@@ -86,6 +130,7 @@ function FuncionarioFormPage() {
                     <CardFooter className='flex items-center justify-end'>
                         <Button
                             onClick={() => {
+                                cadastrar(funcionarioData, id);
                                 alert("Funcionario CADASTRADO com sucesso.");
                                 navigate(-1);
                             }}

@@ -17,7 +17,7 @@ export function TreinoTableComponent({ scrollAreaSize, alunos }: { scrollAreaSiz
     if (!alunos) return
 
     const filtered_names = alunos.filter((data: any) => data);
-    console.log(filtered_names[0]);
+    console.log(filtered_names);
     return (
         <Card className='pb-2 h-full'>
             <CardHeader className="flex flex-row items-center">
@@ -64,7 +64,7 @@ export function TreinoTableComponent({ scrollAreaSize, alunos }: { scrollAreaSiz
                                 return (
                                     <TableRow key={index}>
                                         <TableCell>
-                                            <div className="font-medium">{data.nome}</div>
+                                            <div className="font-medium">{data.nomeExercicio}</div>
                                         </TableCell>
                                         <TableCell>
                                             <div className="font-medium">{data.musculo}</div>
@@ -76,7 +76,7 @@ export function TreinoTableComponent({ scrollAreaSize, alunos }: { scrollAreaSiz
                                                     navigate(`/treinos/form-treino/${data.id}`);
                                                 }}
                                             >
-                                                Ver matrícula
+                                                Ver treino
                                             </Button>
 
                                         </TableCell>
@@ -95,7 +95,7 @@ export function TreinoTableComponent({ scrollAreaSize, alunos }: { scrollAreaSiz
                                             <Button
                                                 className="hover:bg-orange-600 duration-100"
                                                 onClick={() => {
-                                                    navigate(`/alunos/form/${data.id}`);
+                                                    navigate(`/treinos/form-treino`);
                                                 }}
                                             >
                                                 Ver treino
