@@ -14,7 +14,7 @@ function MatriculaPage(){
 
     async function listarTodos() {
         try {
-            await http.get(`/aluno/ativo`)
+            await http.get(`/aluno`)
                 .then(res => {
                     setAlunos(res.data)
                     console.log(res.data);
@@ -33,7 +33,7 @@ function MatriculaPage(){
             <div className="flex flex-col w-full gap-2 px-4 py-2">
                 <div className='flex items-center justify-end w-full'>
                 </div>
-                <MatriculaTableComponent scrollAreaSize="h-[470px]" alunos={alunos.content} />
+                <MatriculaTableComponent scrollAreaSize="h-[470px]" alunos={alunos} />
             </div>
         </PageLayoutComponent>
 

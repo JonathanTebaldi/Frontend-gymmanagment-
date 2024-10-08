@@ -42,7 +42,7 @@ function FuncionariosPage() {
                         <p>Cadastro</p>
                     </Button>
                 </div>
-                <FuncionarioTableComponent scrollAreaSize="h-[470px]" alunos={funcionarios.content} />
+                <FuncionarioTableComponent scrollAreaSize="h-[470px]" alunos={funcionarios} />
             </div>
         </PageLayoutComponent>
     );

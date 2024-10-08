@@ -40,7 +40,7 @@ function PlanosPage() {
                         <p>Cadastro</p>
                     </Button>
                 </div>
-                <PlanosTableComponent scrollAreaSize="h-[470px]" alunos={alunos.content} />
+                <PlanosTableComponent scrollAreaSize="h-[470px]" alunos={alunos} />
             </div>
         </PageLayoutComponent>
     );

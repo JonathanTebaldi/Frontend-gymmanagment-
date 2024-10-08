@@ -40,7 +40,7 @@ function AlunosPage() {
                         <p>Cadastro</p>
                     </Button>
                 </div>
-                <StudentTableComponent scrollAreaSize="h-[470px]" alunos={alunos.content} />
+                <StudentTableComponent scrollAreaSize="h-[470px]" alunos={alunos} />
             </div>
         </PageLayoutComponent>
     );
